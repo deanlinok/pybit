@@ -3,6 +3,7 @@ from enum import Enum
 
 class Trade(str, Enum):
     PLACE_ORDER = "/v5/order/create"
+    REPLACE_ORDER = "/v5/order/replace"
     AMEND_ORDER = "/v5/order/amend"
     CANCEL_ORDER = "/v5/order/cancel"
     GET_OPEN_ORDERS = "/v5/order/realtime"

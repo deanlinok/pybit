@@ -46,6 +46,26 @@ class TradeHTTP(_V5HTTPManager):
             auth=True,
         )
 
+    def replace_order(self, **kwargs):
+        """Unified account covers: Linear contract / Options
+        Normal account covers: USDT perpetual / Inverse perpetual / Inverse futures
+
+        Required args:
+            orderId, price
+
+        Returns:
+            Request results as dictionary.
+
+        Additional information:
+            https://bybit-exchange.github.io/docs/v5/order/replace-order
+        """
+        return self._submit_request(
+            method="POST",
+            path=f"{self.endpoint}{Trade.REPLACE_ORDER}",
+            query=kwargs,
+            auth=True,
+        )
+
     def cancel_order(self, **kwargs):
         """Unified account covers: Spot / Linear contract / Options
         Normal account covers: USDT perpetual / Inverse perpetual / Inverse futures
